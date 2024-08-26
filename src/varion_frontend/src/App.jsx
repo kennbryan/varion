@@ -1,30 +1,32 @@
-import { useState } from 'react';
-import { varion_backend } from 'declarations/varion_backend';
+import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import Homepage from './landing/homepage';
+import Dashboard from './dashboard/dashboard';
+import { useConnect } from "@connect2ic/react"
 
 function App() {
-  const [greeting, setGreeting] = useState('');
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    const name = event.target.elements.name.value;
-    varion_backend.greet(name).then((greeting) => {
-      setGreeting(greeting);
-    });
-    return false;
-  }
+  const { isConnected } = useConnect({
+    onConnect: () => {},
+    onDisconnect: () => {}
+  })
 
   return (
-    <main>
-      <img src="/logo2.svg" alt="DFINITY logo" />
-      <br />
-      <br />
-      <form action="#" onSubmit={handleSubmit}>
-        <label htmlFor="name">Enter your name: &nbsp;</label>
-        <input id="name" alt="Name" type="text" />
-        <button type="submit">Click Me!</button>
-      </form>
-      <section id="greeting">{greeting}</section>
-    </main>
+    <Router>
+      <Routes>
+        <Route 
+          path="/" 
+          element={
+            isConnected ? <Navigate to="/dashboard" /> : <Homepage />
+          } 
+        />
+        <Route 
+          path="/dashboard" 
+          element={
+            isConnected ? <Dashboard /> : <Navigate to="/" />
+          } 
+        />
+      </Routes>
+    </Router>
   );
 }
 

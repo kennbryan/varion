@@ -1,3 +1,12 @@
+type PredictionFailed = record {
+    message : text;
+};
+
+type PredictionResult = variant {
+    Success : text;
+    Failure : PredictionFailed;
+};
+
 service : {
-    "greet": (text) -> (text) query;
-}
+    prediction_result : (text) -> (PredictionResult);
+};
