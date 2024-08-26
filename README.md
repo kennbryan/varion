@@ -60,7 +60,7 @@ If you are making frontend changes, you can start a development server.
 ```bash
 npm start
 ```
-
+Once deployment is complete, check out Varion's User Manual for a comprehensive guide on how to fully utilize the application at [Varion Gitbook](https://varion.gitbook.io/varion-ai-documentation).
 
 ## License
 
