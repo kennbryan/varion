@@ -443,10 +443,7 @@ const Dashboard = () => {
       
       // Validate the data
       if (!validateApiResponse(data)) {
-        setLink('');
-        setToken('');
-        setIsSubmitted(false);
-        throw new Error('Some of the data is missing required fields or is empty.')
+        throw new Error('Some of the data is missing required fields or is empty.');
       }
   
       const formattedData = data.map(row => 
@@ -501,22 +498,19 @@ const Dashboard = () => {
       ]);
       setLastUpdateTime(now);
     })
-    
     .catch(error => {
       console.error('There was a problem with the fetch operation:', error);
       setModalError(`An error occurred: ${error.message}`);
-      // Stop the interval if there's an error
-      setIsRunning(false);
-      clearInterval(intervalRef.current);
+      // Do not stop the interval or change the running state
     });
   };
-
+  
   const handleStartStop = () => {
     setIsRunning(!isRunning);
     if (!isRunning) {
       console.log('Starting the process');
       fetchData().then(() => {
-        intervalRef.current = setInterval(fetchData, 10000); // Fetch every 60 seconds
+        intervalRef.current = setInterval(fetchData, 10000); // Fetch every 10 seconds
       });
     } else {
       console.log('Stopping the process');
