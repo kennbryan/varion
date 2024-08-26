@@ -1,0 +1,27 @@
+{
+  "canisters": {
+    "varion_backend": {
+      "candid": "src/varion_backend/varion_backend.did",
+      "package": "varion_backend",
+      "type": "rust"
+    },
+    "varion_frontend": {
+      "dependencies": [
+        "varion_backend"
+      ],
+      "source": [
+        "src/varion_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "varion_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
