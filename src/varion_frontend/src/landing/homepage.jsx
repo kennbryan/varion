@@ -281,7 +281,7 @@ const Navbar = styled.nav`
 `;
 
 const Logo = styled.img`
-  height: 40px;
+  height: 2.5rem;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 `;
 
@@ -297,11 +297,11 @@ const Hero = styled.section`
 `;
 
 const HeroContent = styled.div`
-  max-width: 800px;
+  max-width: 50rem;
   margin: 0 auto;
 
   h1 {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     margin-bottom: 1.5rem;
     background: linear-gradient(45deg, #0066cc, #00ccff);
     -webkit-background-clip: text;
@@ -311,7 +311,7 @@ const HeroContent = styled.div`
   }
 
   p {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     line-height: 1.6;
     color: #555;
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
@@ -319,8 +319,8 @@ const HeroContent = styled.div`
 `;
 
 const About = styled.section`
-  min-height: 94.6vh;
-  max-height: 94.6vh;
+  min-height: 91.2vh;
+  max-height: 91.2vh;
   padding: 2rem 2rem;
   position: relative;
   overflow: hidden;
@@ -342,7 +342,7 @@ const About = styled.section`
   h2 {
     text-align: center;
     margin-bottom: 2rem;
-    font-size: 2.8rem;
+    font-size: 2rem;
     color: #0066cc;
     position: relative;
     z-index: 1;
@@ -364,7 +364,7 @@ const Features = styled.div`
 
 const Feature = styled(motion.div)`
   background-color: rgba(255, 255, 255, 0.9);
-  padding: 2rem;
+  padding: 1.5rem;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
@@ -375,13 +375,13 @@ const Feature = styled(motion.div)`
 
   h3 {
     margin: 1rem 0;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     align-self: flex-start;
     color: #0066cc;
   }
 
   p {
-    font-size: 1rem;
+    font-size: 0.9rem;
     line-height: 1.5;
     margin: 0;
     text-align: justify;
@@ -392,7 +392,7 @@ const Feature = styled(motion.div)`
 `;
 
 const FeatureIcon = styled.div`
-  font-size: 3rem;
+  font-size: 2rem;
   margin-bottom: 1rem;
   transform: scale(1);
   transition: transform 0.15s ease-out;
@@ -403,8 +403,8 @@ const FeatureIcon = styled.div`
 `;
 
 const RoadmapSection = styled.section`
-  min-height: 94.6vh;
-  max-height: 94.6vh;
+  min-height: 91.2vh;
+  max-height: 91.2vh;
   padding: 2rem 2rem;
   position: relative;
   overflow: hidden;
@@ -426,7 +426,7 @@ const RoadmapSection = styled.section`
   h2 {
     text-align: center;
     margin-bottom: 2rem;
-    font-size: 2.8rem;
+    font-size: 2rem;
     color: #0066cc;
     position: relative;
     z-index: 1;
@@ -472,10 +472,10 @@ const LogoContainer = styled.div`
   align-items: center;
 
   img {
-    height: 20px;
+    height: 1.25rem;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
     background-color: rgba(0, 0, 0, 0.7); 
-    padding: 15px;
+    padding: 0.75rem;
     border-radius: 14px; 
   }
 `;
@@ -503,7 +503,7 @@ const PopupContent = styled(motion.div)`
   background-color: white;
   padding: 2rem;
   border-radius: 15px;
-  max-width: 500px;
+  max-width: 31.25rem;
   width: 90%;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   position: relative;
