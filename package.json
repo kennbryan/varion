@@ -20,6 +20,7 @@
     "@connect2ic/react": "^0.2.0-beta.24",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
+    "@fullpage/react-fullpage": "^0.1.42",
     "@mui/icons-material": "^5.16.7",
     "@mui/material": "^5.16.7",
     "@nivo/bar": "^0.87.0",

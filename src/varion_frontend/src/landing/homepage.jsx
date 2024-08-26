@@ -1,10 +1,11 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import ReactFullpage from '@fullpage/react-fullpage';
+import { motion, AnimatePresence } from 'framer-motion';
 import styled from 'styled-components';
 import { useInView } from 'react-intersection-observer';
 import { ConnectButton, ConnectDialog } from '@connect2ic/react';
 import ArrowForwardIcon from '@mui/icons-material/KeyboardArrowRight';
-import ICLogo from '../assets/ICLogoWhite.png'; 
+import ICLogo from '../assets/ICLogoWhite.png';
 import Roadmap from './roadmap';
 
 const FeatureCard = ({ feature, index }) => {
@@ -18,7 +19,7 @@ const FeatureCard = ({ feature, index }) => {
       ref={ref}
       initial={{ opacity: 0, y: 50 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      transition={{ duration: 0.8, delay: index * 0.2 }}
       whileHover={{ 
         scale: 1.05, 
         boxShadow: '0 20px 50px rgba(0, 0, 0, 0.2)',
@@ -32,76 +33,169 @@ const FeatureCard = ({ feature, index }) => {
   );
 };
 
-const Homepage = () => {
+const PrivacyPolicyPopup = ({ isOpen, onClose }) => {
   return (
-    <Container>
-      <Navbar>
-        <Logo src="/varionlogo.png" alt="Varion Logo" />
-        <StyledConnectButton>
-          <ConnectButton className="connect-button">
-            <ArrowForwardIcon />
-            <span>Launch Varion</span>  
-          </ConnectButton>
-        </StyledConnectButton>
-      </Navbar>
-      <ConnectDialog />
-
-      <Hero>
-        <HeroContent>
-          <motion.h1
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-          >
-            Revolutionizing Healthcare with Decentralized AI
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.8 }}
-          >
-            Introducing a decentralized AI monitoring dashboard for hospitals. Elevate patient care and safety to unprecedented levels.
-          </motion.p>
-        </HeroContent>
-      </Hero>
-
-      <About>
-        <motion.h2
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+    <AnimatePresence>
+      {isOpen && (
+        <PopupOverlay
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={onClose}
         >
-          About Varion
-        </motion.h2>
-        <Features>
-          {featuresData.map((feature, index) => (
-            <FeatureCard key={feature.title} feature={feature} index={index} />
-          ))}
-        </Features>
-      </About> 
+          <PopupContent
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 50, opacity: 0 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <PopupCloseButton onClick={onClose}>&times;</PopupCloseButton>
+            <h2>Privacy Policy</h2>
+            <p>
+              Our platform is designed with your privacy in mind, ensuring that no personal data is stored on our servers. We do not collect, retain, or share any user data. When you interact with our website, all information you provide is used solely for the duration of your session.
+            </p>
+          </PopupContent>
+        </PopupOverlay>
+      )}
+    </AnimatePresence>
+  );
+};
 
-      <RoadmapSection>
-        <motion.h2
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          Varion's Roadmap
-        </motion.h2>
-        <Roadmap />
-      </RoadmapSection>
-      <Footer>
-        <p>&copy; 2024 Varion. All rights reserved.</p>
-        <FooterLinks>
-          <a href="#">Terms & Conditions</a>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Contact Us</a>
-        </FooterLinks>
-        <LogoContainer>
-          <img src={ICLogo} alt="IC Logo" />
-        </LogoContainer>
-      </Footer>
-    </Container>
+const Homepage = () => {
+  const [isPrivacyPolicyOpen, setIsPrivacyPolicyOpen] = useState(false);
+
+  return (
+    <AnimatePresence>
+      <Container
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <Navbar>
+          <motion.div
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <Logo src="/varionlogo.png" alt="Varion Logo" />
+          </motion.div>
+          <motion.div
+            initial={{ x: 50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <StyledConnectButton>
+              <ConnectButton className="connect-button">
+                <ArrowForwardIcon />
+                <span>Launch Varion</span>  
+              </ConnectButton>
+            </StyledConnectButton>
+          </motion.div>
+        </Navbar>
+        <ConnectDialog />
+
+        <ReactFullpage
+          licenseKey={'YOUR_KEY_HERE'}
+          scrollingSpeed={1000}
+          navigation={false}
+          autoScrolling={true}
+          scrollOverflow={true}
+          scrollingSensitivity={50}
+          scrollOverflowReset={true}
+          
+          render={({ state, fullpageApi }) => {
+            return (
+              <ReactFullpage.Wrapper>
+                <div className="section">
+                  <Hero>
+                    <HeroContent>
+                      <motion.h1
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.5, duration: 0.8 }}
+                      >
+                        Revolutionizing Healthcare with Decentralized AI
+                      </motion.h1>
+                      <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.8, duration: 0.8 }}
+                      >
+                        Introducing a decentralized AI monitoring dashboard for hospitals. Elevate patient care and safety to unprecedented levels.
+                      </motion.p>
+                    </HeroContent>
+                  </Hero>
+                </div>
+                <div className="section">
+                  <About id="about">
+                    <motion.h2
+                      initial={{ opacity: 0, y: 50 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      About Varion
+                    </motion.h2>
+                    <Features>
+                      {featuresData.map((feature, index) => (
+                        <FeatureCard key={feature.title} feature={feature} index={index} />
+                      ))}
+                    </Features>
+                  </About>
+                </div>
+                <div className="section">
+                  <RoadmapSection id="roadmap">
+                    <motion.h2
+                      initial={{ opacity: 0, y: 50 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      Varion's Roadmap
+                    </motion.h2>
+                    <Roadmap />
+                  </RoadmapSection>
+                </div>
+                <div className="section fp-auto-height">
+                  <Footer>
+                    <motion.p
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      &copy; 2024 Varion. All rights reserved.
+                    </motion.p>
+                    <FooterLinks>
+                      <motion.a
+                        href="#"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.1 }}
+                        onClick={() => setIsPrivacyPolicyOpen(true)}
+                      >
+                        Privacy Policy
+                      </motion.a>
+                    </FooterLinks>
+                    <LogoContainer>
+                      <motion.img
+                        src={ICLogo}
+                        alt="IC Logo"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: 0.3 }}
+                      />
+                    </LogoContainer>
+                  </Footer>
+                </div>
+              </ReactFullpage.Wrapper>
+            );
+          }}
+        />
+        <PrivacyPolicyPopup
+          isOpen={isPrivacyPolicyOpen}
+          onClose={() => setIsPrivacyPolicyOpen(false)}
+        />
+      </Container>
+    </AnimatePresence>
   );
 };
 
@@ -155,7 +249,7 @@ const StyledConnectButton = styled.div`
   }
 `;
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   font-family: 'Poppins', sans-serif;
   background-image: url('./gradientBg.jpg');
   background-size: cover;
@@ -192,7 +286,7 @@ const Logo = styled.img`
 `;
 
 const Hero = styled.section`
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -225,8 +319,9 @@ const HeroContent = styled.div`
 `;
 
 const About = styled.section`
-  min-height: 100vh;
-  padding: 6rem 2rem;
+  min-height: 94.6vh;
+  max-height: 94.6vh;
+  padding: 2rem 2rem;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -246,7 +341,7 @@ const About = styled.section`
 
   h2 {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     font-size: 2.8rem;
     color: #0066cc;
     position: relative;
@@ -308,9 +403,9 @@ const FeatureIcon = styled.div`
 `;
 
 const RoadmapSection = styled.section`
-  min-height: 100vh;
-  padding: 3rem 2rem; // Reduced top padding
-  margin-top: -3rem; // Added negative margin to move it up
+  min-height: 94.6vh;
+  max-height: 94.6vh;
+  padding: 2rem 2rem;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -330,7 +425,7 @@ const RoadmapSection = styled.section`
 
   h2 {
     text-align: center;
-    margin-bottom: 2rem; // Reduced bottom margin
+    margin-bottom: 2rem;
     font-size: 2.8rem;
     color: #0066cc;
     position: relative;
@@ -385,4 +480,58 @@ const LogoContainer = styled.div`
   }
 `;
 
-export default Homepage;
+const HideFullpageCredits = styled.div`
+  .fp-watermark {
+    display: none !important;
+  }
+`;
+
+const PopupOverlay = styled(motion.div)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+`;
+
+const PopupContent = styled(motion.div)`
+  background-color: white;
+  padding: 2rem;
+  border-radius: 15px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+
+  h2 {
+    color: #0066cc;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: #333;
+    line-height: 1.6;
+  }
+`;
+
+const PopupCloseButton = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #0066cc;
+`;
+
+export default () => (
+  <HideFullpageCredits>
+    <Homepage />
+  </HideFullpageCredits>
+);
