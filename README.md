@@ -1,61 +1,71 @@
-# `varion`
+# Varion AI
 
-Welcome to your new `varion` project and to the Internet Computer development community. By default, creating a new project adds this README and some template files to your project directory. You can edit these template files to customize your project and to include your own code to speed up the development cycle.
 
-To get started, you might want to explore the project directory structure and the default configuration file. Working with this project in your development environment will not affect any production deployment or identity tokens.
 
-To learn more before you start working with `varion`, see the following documentation available online:
+## Overview
 
-- [Quick Start](https://internetcomputer.org/docs/current/developer-docs/setup/deploy-locally)
-- [SDK Developer Tools](https://internetcomputer.org/docs/current/developer-docs/setup/install)
-- [Rust Canister Development Guide](https://internetcomputer.org/docs/current/developer-docs/backend/rust/)
-- [ic-cdk](https://docs.rs/ic-cdk)
-- [ic-cdk-macros](https://docs.rs/ic-cdk-macros)
-- [Candid Introduction](https://internetcomputer.org/docs/current/developer-docs/backend/candid/)
+Varion AI is a decentralized healthcare monitoring system designed to optimize hospital operations through artificial intelligence. By continuously monitoring patient health data, Varion AI leverages a decentralized machine learning model to assess the risk of cardiac arrest, ensuring data integrity and security. 
 
-If you want to start working on your project right away, you might want to try the following commands:
+Powered by the Internet Computer Protocol, Varion AI provides a secure, scalable, and decentralized infrastructure, seamlessly integrating with centralized infrastructure to bridge between Web2 and Web3 data.
 
+
+## Features
+
+- **Cardiovascular Disease Prediction**: Utilizes DeAI to analyze patient data and predict heart-related risks by evaluating metrics such as heart rate, blood pressure, oxygen saturation, respiratory rate, and temperature. This helps identify high-risk patients for timely interventions, reducing cardiovascular morbidity and mortality rates.
+- **Real-Time Monitoring Dashboard**: The user-friendly dashboard allows healthcare professionals to view and analyze patient data in real-time. It includes features like risk level filtering, patient search, and data sorting by cardiac probability, ensuring that critical information is always at the fingertips of medical staff.
+- **Patient Management Strategies**: This feature allows healthcare professionals to easily search, filter, and sort patient data based on various criteria. Users can search for patients by ID, filter patients by risk level, and sort patients by cardiac probability. The feature provides real-time updates and visual indicators to help identify high-risk patients at a glance.
+- **On-Chain Inference**: Run machine learning models on a decentralized platform, leveraging the unique capabilities of DeAI on the Internet Computer.
+
+
+## Getting Started
+
+This section guides you through the initial setup of the necessary tools and environments for this project. We are using Rust with WebAssembly and the Dfinity platform.
+
+### Rust Setup
+
+First, ensure you have Rust installed. We will then set the default toolchain to stable and add the WebAssembly target.
+
+1. Install Rust and Cargo (if not already installed): Visit [Rust's installation page](https://www.rust-lang.org/tools/install).
+2. Set the default toolchain to stable:
+   ```bash
+   rustup default stable
+   ```
+3. Add the WebAssembly target:
+   ```bash
+   rustup target add wasm32-unknown-unknown
+   ```
+
+### Node Package Installation
+Next, ensures that the project has all the necessary libraries and tools to run or build the application.
 ```bash
-cd varion/
-dfx help
-dfx canister --help
+npm install
 ```
 
-## Running the project locally
+### Dfinity's DFX Setup
 
-If you want to test your project locally, you can use the following commands:
+We will be using Dfinity's `dfx` for our development environment.
 
-```bash
-# Starts the replica, running in the background
-dfx start --background
+1. Install Dfinity's `dfx`: Follow the instructions on [Dfinity's SDK documentation](https://sdk.dfinity.org/docs/quickstart/quickstart.html).
+2. Starts the replica, running in the background:
+   ```bash
+   dfx start --background
+   ```
+3. Deploys your canisters to the replica and generates your candid interface:
+   ```bash
+   dfx deploy
+   ```
 
-# Deploys your canisters to the replica and generates your candid interface
-dfx deploy
-```
-
-Once the job completes, your application will be available at `http://localhost:4943?canisterId={asset_canister_id}`.
-
-If you have made changes to your backend canister, you can generate a new candid interface with
-
-```bash
-npm run generate
-```
-
-at any time. This is recommended before starting the frontend development server, and will be run automatically any time you run `dfx deploy`.
-
-If you are making frontend changes, you can start a development server with
-
+### Start the Development Server
+If you are making frontend changes, you can start a development server.
 ```bash
 npm start
 ```
 
-Which will start a server at `http://localhost:8080`, proxying API requests to the replica at port 4943.
 
-### Note on frontend environment variables
+## License
 
-If you are hosting frontend code somewhere without using DFX, you may need to make one of the following adjustments to ensure your project does not fetch the root key in production:
+Apache 2.0/MIT
+All original work licensed under either of
 
-- set`DFX_NETWORK` to `ic` if you are using Webpack
-- use your own preferred method to replace `process.env.DFX_NETWORK` in the autogenerated declarations
-  - Setting `canisters -> {asset_canister_id} -> declarations -> env_override to a string` in `dfx.json` will replace `process.env.DFX_NETWORK` with the string in the autogenerated declarations
-- Write your own `createActor` constructor
+Apache License, Version 2.0 (LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0)
+MIT license (LICENSE-MIT or http://opensource.org/licenses/MIT) at your option.
