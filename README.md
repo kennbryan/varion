@@ -1,6 +1,6 @@
 # Varion AI
 
-
+<p align="center"><img width="628" height="150" src="src/varion_frontend/public/varionlogo.png"></p>
 
 ## Overview
 
@@ -60,6 +60,8 @@ If you are making frontend changes, you can start a development server.
 ```bash
 npm start
 ```
+
+## Varion's User Manual
 Once deployment is complete, check out Varion's User Manual for a comprehensive guide on how to fully utilize the application at [Varion Gitbook](https://varion.gitbook.io/varion-ai-documentation).
 
 ## License
