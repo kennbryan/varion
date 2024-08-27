@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Homepage from './landing/homepage';
 import Dashboard from './dashboard/dashboard';
 import { useConnect } from "@connect2ic/react"
+
+console.error = () => {};
 
 function App() {
   const { isConnected } = useConnect({
