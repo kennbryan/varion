@@ -98,12 +98,12 @@ const Homepage = () => {
         <ReactFullpage
           licenseKey={'YOUR_KEY_HERE'}
           scrollingSpeed={1000}
-          navigation={false}
+          navigation={true}
           autoScrolling={true}
           scrollOverflow={true}
           scrollingSensitivity={50}
           scrollOverflowReset={true}
-          
+
           render={({ state, fullpageApi }) => {
             return (
               <ReactFullpage.Wrapper>
@@ -122,8 +122,18 @@ const Homepage = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.8, duration: 0.8 }}
                       >
-                        Introducing a decentralized AI monitoring dashboard for hospitals. Elevate patient care and safety to unprecedented levels.
+                        Introducing a Decentralized AI Monitoring Dashboard for Hospitals. <br></br>Elevate patient care and safety to unprecedented levels.
                       </motion.p>
+
+                      <LogoContainer>
+                      <motion.img
+                        src={ICLogo}
+                        alt="IC Logo"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: 0.3 }}
+                      />
+                    </LogoContainer>
                     </HeroContent>
                   </Hero>
                 </div>
@@ -175,15 +185,6 @@ const Homepage = () => {
                         Privacy Policy
                       </motion.a>
                     </FooterLinks>
-                    <LogoContainer>
-                      <motion.img
-                        src={ICLogo}
-                        alt="IC Logo"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.5, delay: 0.3 }}
-                      />
-                    </LogoContainer>
                   </Footer>
                 </div>
               </ReactFullpage.Wrapper>
@@ -202,12 +203,12 @@ const Homepage = () => {
 const featuresData = [
   {
     title: 'AI-Powered Insights',
-    description: 'Harness the power of AI to gain real-time insights into patient health and hospital operations.',
+    description: 'Harness the power of artificial intelligence to gain real-time insights into patient health and hospital operations, transforming the way healthcare is delivered and managed.',
     icon: '🧠',
   },
   {
     title: 'Seamless Integration',
-    description: 'Effortlessly integrate with existing hospital systems for a smooth transition to AI-driven care.',
+    description: 'Effortlessly integrate our AI-driven solutions with existing hospital systems for a smooth transition to advanced, data-driven care.',
     icon: '🔗',
   },
   {
@@ -411,6 +412,7 @@ const RoadmapSection = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 2rem;
 
   &::before {
     content: '';
@@ -475,7 +477,7 @@ const LogoContainer = styled.div`
     height: 1.25rem;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
     background-color: rgba(0, 0, 0, 0.7); 
-    padding: 0.75rem;
+    padding: 1rem;
     border-radius: 14px; 
   }
 `;
