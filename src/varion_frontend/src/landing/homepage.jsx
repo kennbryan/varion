@@ -260,6 +260,7 @@ const Container = styled(motion.div)`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  backdrop-filter: blur(5px); /* Apply blur to the entire container */
 `;
 
 const Navbar = styled.nav`
@@ -272,7 +273,6 @@ const Navbar = styled.nav`
   align-items: center;
   padding: 1rem 2rem;
   background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(5px);
   z-index: 1000;
   transition: background-color 0.3s ease;
 
@@ -293,8 +293,6 @@ const Hero = styled.section`
   align-items: center;
   text-align: center;
   padding: 0 2rem;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(5px);
 `;
 
 const HeroContent = styled.div`
@@ -320,25 +318,12 @@ const HeroContent = styled.div`
 `;
 
 const About = styled.section`
-  min-height: 91.2vh;
-  max-height: 91.2vh;
   padding: 2rem 2rem;
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(5px);
-  }
 
   h2 {
     text-align: center;
@@ -369,7 +354,6 @@ const Feature = styled(motion.div)`
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  backdrop-filter: blur(5px);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -404,8 +388,8 @@ const FeatureIcon = styled.div`
 `;
 
 const RoadmapSection = styled.section`
-  min-height: 91.2vh;
-  max-height: 91.2vh;
+  min-height: 90vh;
+  max-height: 90vh;
   padding: 2rem 2rem;
   position: relative;
   overflow: hidden;
@@ -413,17 +397,7 @@ const RoadmapSection = styled.section`
   flex-direction: column;
   justify-content: center;
   margin-bottom: 2rem;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(5px);
-  }
+  margin-top: -10rem;
 
   h2 {
     text-align: center;
@@ -441,11 +415,6 @@ const Footer = styled.footer`
   padding: 3rem 2rem;
   text-align: center;
   position: relative;
-  backdrop-filter: blur(5px);
-
-  &::before {
-    content: none;
-  }
 `;
 
 const FooterLinks = styled.div`
