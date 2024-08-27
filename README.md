@@ -8,14 +8,15 @@ Varion AI is a decentralized healthcare monitoring system designed to optimize h
 
 Powered by the Internet Computer Protocol, Varion AI provides a secure, scalable, and decentralized infrastructure, seamlessly integrating with centralized infrastructure to bridge between Web2 and Web3 data.
 
-
 ## Features
 
 - **Cardiovascular Disease Prediction**: Utilizes DeAI to analyze patient data and predict heart-related risks by evaluating metrics such as heart rate, blood pressure, oxygen saturation, respiratory rate, and temperature. This helps identify high-risk patients for timely interventions, reducing cardiovascular morbidity and mortality rates.
-- **Real-Time Monitoring Dashboard**: The user-friendly dashboard allows healthcare professionals to view and analyze patient data in real-time. It includes features like risk level filtering, patient search, and data sorting by cardiac probability, ensuring that critical information is always at the fingertips of medical staff.
+- **Real-Time Monitoring Dashboard**: The user-friendly dashboard enables healthcare professionals to view and analyze patient data in real-time, allowing hospitals to update the spreadsheet with new ECG data every minute. This continuous updating ensures that the dashboard is consistently refreshed with the most recent information.
 - **Patient Management Strategies**: This feature allows healthcare professionals to easily search, filter, and sort patient data based on various criteria. Users can search for patients by ID, filter patients by risk level, and sort patients by cardiac probability. The feature provides real-time updates and visual indicators to help identify high-risk patients at a glance.
 - **On-Chain Inference**: Run machine learning models on a decentralized platform, leveraging the unique capabilities of DeAI on the Internet Computer.
 
+## Technical Architecture
+<p align="center"><img src="src/varion_frontend/public/TechArch.png"></p>
 
 ## Getting Started
 
