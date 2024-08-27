@@ -535,6 +535,9 @@ const Dashboard = () => {
   const handleConfirm = () => {
     if (validateInputs()) {
       setIsEditing(false);
+      if (isRunning) {
+        handleStartStop();
+      }
     }
   };
 
