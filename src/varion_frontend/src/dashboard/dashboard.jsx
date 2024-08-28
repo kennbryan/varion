@@ -592,7 +592,13 @@ const Dashboard = () => {
                     tickRotation: 0,
                     legend: 'Patient Count',
                     legendPosition: 'middle',
-                    legendOffset: -40
+                    legendOffset: -40,
+                    format: d => Number.isInteger(d) ? d : '',
+                    tickValues: (maxPatients => {
+                      if (maxPatients <= 10) return undefined;
+                      const interval = Math.ceil(maxPatients / 10);
+                      return Array.from({length: Math.floor(maxPatients / interval) + 1}, (_, i) => i * interval);
+                    })(Math.max(...chartData[0].data.map(d => d.Patients)))
                   }}
                   labelSkipWidth={12}
                   labelSkipHeight={12}
