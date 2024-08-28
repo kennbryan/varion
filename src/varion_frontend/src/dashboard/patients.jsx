@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiSearch, FiRefreshCw } from 'react-icons/fi';
+import { FiSearch } from 'react-icons/fi';
 
 const PatientsContainer = styled.div`
   padding: 30px;
@@ -182,7 +182,6 @@ useEffect(() => {
   setPatients(patientData);
   if (patientData.length > 0 && patientData[0].lastUpdated) {
     setLastUpdateTime((patientData[0].lastUpdated));
-    console.log("JOS");
   } else {
     setLastUpdateTime('Not available');
   }

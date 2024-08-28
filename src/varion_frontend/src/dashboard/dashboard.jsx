@@ -302,10 +302,10 @@ const NoDataMessage = styled.div`
 
 const maskToken = (token) => {
   if (token.length <= 10) {
-    return ''; //
+    return ''; 
   }
-  const end = token.slice(-4); // Show the last 4 characters
-  const masked = '********'; // Use a fixed number of asterisks
+  const end = token.slice(-4); 
+  const masked = '********'; 
   return `${masked}${end}`;
 };
 
@@ -389,11 +389,7 @@ const Dashboard = () => {
       setModalError('Please enter a valid sheetdb.io link.');
       return false;
     }
-  
-    // Create the curl request string for logging purposes
-    const curlCommand = `curl -H "Authorization: Bearer ${token}" ${link}`;
-    console.log('Curl command:', curlCommand);
-  
+
     // Make the actual API request
     fetch(link, {
       method: 'GET',
@@ -408,7 +404,6 @@ const Dashboard = () => {
       return response.json();
     })
     .then(data => {
-      console.log('API response:', data);
       if (!validateApiResponse(data)) {
         setModalError('The data is missing required fields. Please ensure all rows contain HR, BP, SpO2, RESP, TEMP, and Patient_ID.');
         setLink('');
@@ -432,7 +427,6 @@ const Dashboard = () => {
   };
 
   const fetchData = () => {
-    console.log('Fetching data...');
     return fetch(link, {
       method: 'GET',
       headers: {
@@ -446,8 +440,6 @@ const Dashboard = () => {
       return response.json();
     })
     .then(data => {
-      console.log('API response:', data);
-      
       // Validate the data
       if (!validateApiResponse(data)) {
         throw new Error('Some of the data is missing required fields or is empty.');
@@ -456,12 +448,9 @@ const Dashboard = () => {
       const formattedData = data.map(row => 
         `${row.HR},${row.BP},${row.SpO2},${row.RESP},${row.TEMP}`).join('\n');
   
-      console.log('Formatted data:', formattedData);
-  
       // Only proceed if the data is valid
       return varion_backend.prediction_result(formattedData)
         .then(result => {
-          console.log('ML Model Prediction Result:', result);
           return { data, result };
         });
     })
@@ -515,20 +504,16 @@ const Dashboard = () => {
   const handleStartStop = () => {
     setIsRunning(!isRunning);
     if (!isRunning) {
-      console.log('Starting the process');
       fetchData().then(() => {
         intervalRef.current = setInterval(fetchData, 10000); // Fetch every 10 seconds
       });
     } else {
-      console.log('Stopping the process');
       clearInterval(intervalRef.current);
     }
   };
 
   const handleSubmit = () => {
     if (validateInputs()) {
-      console.log('Link submitted:', link);
-      console.log('Token submitted:', token);
       setIsSubmitted(true);
     }
   };
