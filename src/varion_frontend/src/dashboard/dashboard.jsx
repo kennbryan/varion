@@ -206,27 +206,34 @@ const CancelButton = styled(StyledButton)`
 
 const ExampleTable = styled.table`
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   margin-top: 10px;
-  border: 2px solid #cbd5e0; /* Darker border for better visibility */
 `;
 
 const TableHeader = styled.th`
-  border: 1px solid #cbd5e0; /* Darker border for better visibility */
   padding: 8px;
   background-color: #edf2f7;
-  text-align: left;
-  width: 16.66%;
+  text-align: center;
+  width: ${props => props.narrow ? '4%' : '16%'};
+  border: none;
 `;
 
 const TableCell = styled.td`
-  border: 1px solid #cbd5e0; /* Darker border for better visibility */
   padding: 8px;
-  width: 16.66%;
+  text-align: center;
+  width: ${props => props.narrow ? '4%' : '16%'};
+  border: none;
+  ${props => props.bordered && `
+    border: ${props.top ? '2px solid #cbd5e0' : '1px solid #cbd5e0'};
+    border-left: ${props.left ? '2px solid #cbd5e0' : '1px solid #cbd5e0'};
+    border-right: ${props.right ? '2px solid #cbd5e0' : '1px solid #cbd5e0'};
+    border-bottom: ${props.bottom ? '2px solid #cbd5e0' : '1px solid #cbd5e0'};
+  `}
 `;
 
 const TableNotes = styled.p`
-  color: #849398; /* Lighter gray color */
+  color: #7A8793; /* Lighter gray color */
   font-weight: bold;
   margin-top: 20px;
   margin-bottom: 0;
@@ -629,7 +636,7 @@ const Dashboard = () => {
                 </>
               ) : (
                 <>
-                  <InstructionText>Please provide a sheetdb.io link and its authorization bearer token to access the Spreadsheet file:</InstructionText>
+                  <InstructionText>Please provide a sheetdb.io link and its authorization bearer token to access the Spreadsheet:</InstructionText>
                   <StyledInput
                     type="url"
                     value={link}
@@ -657,42 +664,86 @@ const Dashboard = () => {
                   )}
                   {(!isSubmitted || isEditing) && (
                     <>
-                      <p>Please ensure your Spreadsheet file follows this template:</p>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                        <p style={{ margin: 0 }}>
+                          Please format your <strong>Google Spreadsheet</strong> according to the following template:
+                        </p>
+                        <button
+                          onClick={() => window.open("https://docs.google.com/spreadsheets/d/18gAB_iD_hw_k0BPA0kM2vMGcrSAGnO470w0ruqwKUEE/edit?usp=sharing", "_blank")}
+                          style={{
+                            padding: '8px 12px',
+                            backgroundColor: '#6A95C7',
+                            color: 'white',
+                            border: 'none',
+                            borderRadius: '5px',
+                            cursor: 'pointer',
+                            fontSize: '14px',
+                            transition: 'background-color 0.3s',
+                            fontWeight: '500'
+                          }}
+                          onMouseOver={(e) => e.target.style.backgroundColor = '#5074A1'}
+                          onMouseOut={(e) => e.target.style.backgroundColor = '#6A95C7'}
+                        >
+                          Example Template
+                        </button>
+                      </div>
                       <ExampleTable>
                         <thead>
                           <tr>
-                            <TableHeader>HR</TableHeader>
-                            <TableHeader>BP</TableHeader>
-                            <TableHeader>SpO2</TableHeader>
-                            <TableHeader>RESP</TableHeader>
-                            <TableHeader>TEMP</TableHeader>
-                            <TableHeader>Patient_ID</TableHeader>
+                            <TableHeader narrow></TableHeader>
+                            <TableHeader>A</TableHeader>
+                            <TableHeader>B</TableHeader>
+                            <TableHeader>C</TableHeader>
+                            <TableHeader>D</TableHeader>
+                            <TableHeader>E</TableHeader>
+                            <TableHeader>F</TableHeader>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
-                            <TableCell>72</TableCell>
-                            <TableCell>120</TableCell>
-                            <TableCell>98</TableCell>
-                            <TableCell>16</TableCell>
-                            <TableCell>36.5</TableCell>
-                            <TableCell>101</TableCell>
+                            <TableHeader narrow>1</TableHeader>
+                            <TableCell bordered top left>HR</TableCell>
+                            <TableCell bordered top>BP</TableCell>
+                            <TableCell bordered top>SpO2</TableCell>
+                            <TableCell bordered top>RESP</TableCell>
+                            <TableCell bordered top>TEMP</TableCell>
+                            <TableCell bordered top right>Patient_ID</TableCell>
                           </tr>
                           <tr>
-                            <TableCell>75</TableCell>
-                            <TableCell>118</TableCell>
-                            <TableCell>97</TableCell>
-                            <TableCell>18</TableCell>
-                            <TableCell>36.7</TableCell>
-                            <TableCell>102</TableCell>
+                            <TableHeader narrow>2</TableHeader>
+                            <TableCell bordered left>72</TableCell>
+                            <TableCell bordered>120</TableCell>
+                            <TableCell bordered>98</TableCell>
+                            <TableCell bordered>16</TableCell>
+                            <TableCell bordered>36.5</TableCell>
+                            <TableCell bordered right>101</TableCell>
                           </tr>
                           <tr>
-                            <TableCell>...</TableCell>
-                            <TableCell>...</TableCell>
-                            <TableCell>...</TableCell>
-                            <TableCell>...</TableCell>
-                            <TableCell>...</TableCell>
-                            <TableCell>...</TableCell>
+                            <TableHeader narrow>3</TableHeader>
+                            <TableCell bordered left>75</TableCell>
+                            <TableCell bordered>118</TableCell>
+                            <TableCell bordered>97</TableCell>
+                            <TableCell bordered>18</TableCell>
+                            <TableCell bordered>36.7</TableCell>
+                            <TableCell bordered right>102</TableCell>
+                          </tr>
+                          <tr>
+                            <TableHeader narrow>4</TableHeader>
+                            <TableCell bordered left>...</TableCell>
+                            <TableCell bordered>...</TableCell>
+                            <TableCell bordered>...</TableCell>
+                            <TableCell bordered>...</TableCell>
+                            <TableCell bordered>...</TableCell>
+                            <TableCell bordered right>...</TableCell>
+                          </tr>
+                          <tr>
+                            <TableHeader narrow>5</TableHeader>
+                            <TableCell bordered bottom left>...</TableCell>
+                            <TableCell bordered bottom>...</TableCell>
+                            <TableCell bordered bottom>...</TableCell>
+                            <TableCell bordered bottom>...</TableCell>
+                            <TableCell bordered bottom>...</TableCell>
+                            <TableCell bordered bottom right>...</TableCell>
                           </tr>
                         </tbody>
                       </ExampleTable>
