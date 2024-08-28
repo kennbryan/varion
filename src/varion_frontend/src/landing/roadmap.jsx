@@ -100,8 +100,8 @@ const roadmapData = [
     heading: [
       'Implementing [Fully On-chain Training] & [Model Inference/Pure DeAI].',
       '[Direct Data Transmission] from Hospital’s [ECG] data to Varion.',
-      'Joining on-site blockchain events to [promote Varion] & [ICP Capabilities] (Market-Fit).',
-      'Releasing to [Mainnet].'
+      'Joining on-site blockchain events to [promote Varion] & [ICP Capabilities].',
+      'Releasing to [Mainnet] (Market-Fit).'
     ],
     position: 'right'
   },
