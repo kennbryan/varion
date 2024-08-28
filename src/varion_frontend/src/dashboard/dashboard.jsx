@@ -522,14 +522,14 @@ const Dashboard = () => {
     setOriginalLink(link);
     setOriginalToken(token);
     setIsEditing(true);
+    if (isRunning) {
+      handleStartStop();
+    }
   };
 
   const handleConfirm = () => {
     if (validateInputs()) {
       setIsEditing(false);
-      if (isRunning) {
-        handleStartStop();
-      }
     }
   };
 
