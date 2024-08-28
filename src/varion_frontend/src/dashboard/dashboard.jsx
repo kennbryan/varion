@@ -626,13 +626,13 @@ const Dashboard = () => {
                     type="url"
                     value={link}
                     onChange={(e) => setLink(e.target.value)}
-                    placeholder="Enter link"
+                    placeholder="Enter Link"
                   />
                   <StyledInput
                     type="text"
                     value={token}
                     onChange={(e) => setToken(e.target.value)}
-                    placeholder="Enter token"
+                    placeholder="Enter Token"
                   />
                   {isEditing ? (
                     <div style={{ display: 'flex', gap: '10px' }}>
@@ -657,7 +657,7 @@ const Dashboard = () => {
                           onClick={() => window.open("https://docs.google.com/spreadsheets/d/18gAB_iD_hw_k0BPA0kM2vMGcrSAGnO470w0ruqwKUEE/edit?usp=sharing", "_blank")}
                           style={{
                             padding: '8px 12px',
-                            backgroundColor: '#6A95C7',
+                            backgroundColor: '#357bfd',
                             color: 'white',
                             border: 'none',
                             borderRadius: '5px',
@@ -666,8 +666,8 @@ const Dashboard = () => {
                             transition: 'background-color 0.3s',
                             fontWeight: '500'
                           }}
-                          onMouseOver={(e) => e.target.style.backgroundColor = '#5074A1'}
-                          onMouseOut={(e) => e.target.style.backgroundColor = '#6A95C7'}
+                          onMouseOver={(e) => e.target.style.backgroundColor = '#0d60f9'}
+                          onMouseOut={(e) => e.target.style.backgroundColor = '#357bfd'}
                         >
                           Example Template
                         </button>
