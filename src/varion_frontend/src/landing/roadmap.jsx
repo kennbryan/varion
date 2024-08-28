@@ -36,15 +36,15 @@ const Milestone = styled(Box)(({ theme, position }) => ({
     position: 'absolute',
     left: position === 'left' ? '0%' : position === 'center' ? '35%' : '70%',
     marginBottom: 0,
-    height: '200px',
+    height: 'auto',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
   },
 }));
 
 const TextBox = styled(Box)(({ theme, maxHeight }) => ({
-  width: '85%',
+  width: '100%',
   padding: '20px',
   backgroundColor: theme.palette.background.paper,
   borderRadius: '8px',
@@ -52,6 +52,7 @@ const TextBox = styled(Box)(({ theme, maxHeight }) => ({
   marginTop: '20px',
   [theme.breakpoints.up('md')]: {
     marginTop: '30px',
+    height: maxHeight,
   },
 }));
 
@@ -99,7 +100,7 @@ const roadmapData = [
     color: '#6495ED', 
     heading: [
       'Implementing [Fully On-chain Training] & [Model Inference/Pure DeAI].',
-      '[Direct Data Transmission] from Hospital’s [ECG] data to Varion.',
+      '[Direct Data Transmission] from Hospital\'s [ECG] data to Varion.',
       'Joining on-site blockchain events to [promote Varion] & [ICP Capabilities].',
       'Releasing to [Mainnet] (Market-Fit).'
     ],
@@ -137,7 +138,7 @@ const MilestoneWithAnimation = ({ milestone, index, maxHeight }) => {
             {milestone.quarter}
           </Typography>
           <Circle color={milestone.color} />
-          <TextBox minHeight={maxHeight}>
+          <TextBox maxHeight={maxHeight}>
             {milestone.heading.map((item, i) => (
               <Box key={i} display="flex" alignItems="flex-start" marginBottom={isMobile ? '10px' : '15px'}>
                 <FiberManualRecordIcon 
@@ -224,6 +225,7 @@ const Roadmap = () => {
           dummyElement.style.visibility = 'hidden';
           dummyElement.style.position = 'absolute';
           dummyElement.style.width = '30%';
+          dummyElement.style.padding = '20px';
           document.body.appendChild(dummyElement);
 
           const content = milestone.heading.map((item) => `
@@ -240,10 +242,18 @@ const Roadmap = () => {
           document.body.removeChild(dummyElement);
         });
 
-        return `${maxHeight+10}px`;
+        return `${maxHeight-5}px`; // Add extra padding
       };
 
       setMaxHeight(calculateMaxHeight());
+
+      // Recalculate on window resize
+      const handleResize = () => {
+        setMaxHeight(calculateMaxHeight());
+      };
+
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
     }
   }, [isMobile]);
 
