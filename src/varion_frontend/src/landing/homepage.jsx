@@ -218,7 +218,7 @@ const featuresData = [
   },
   {
     title: 'On-Chain Inference',
-    description: 'Leverage on-chain ML models, made possible by the Internet Computer, for cutting-edge healthcare solutions.',
+    description: 'Leverage on-chain Deep Learning models, made possible by the Internet Computer, for cutting-edge healthcare solutions.',
     icon: '🔄',
   },
 ];
@@ -388,8 +388,8 @@ const FeatureIcon = styled.div`
 `;
 
 const RoadmapSection = styled.section`
-  min-height: 90vh;
-  max-height: 90vh;
+  min-height: 104.0vh;
+  max-height: 104.0vh;
   padding: 2rem 2rem;
   position: relative;
   overflow: hidden;

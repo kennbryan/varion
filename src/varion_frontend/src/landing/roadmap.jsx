@@ -78,8 +78,9 @@ const roadmapData = [
     color: '#0047AB', 
     heading: [
       'Implementing [Internet Identity].',
-      'Implementing [On-chain Model Inference/DeAI].',
-      'Providing [Data Insights] and [Graphical Reports].'
+      'Implementing [On-chain Deep Learning Model Inference/DeAI].',
+      'Providing [Data Insights] and [Graphical Reports].',
+      'Releasing to [Mainnet] (Minimum-Viable-Product).'
     ],
     position: 'left'
   },
@@ -89,7 +90,7 @@ const roadmapData = [
     heading: [
       '[Pre-seed] Funding.',
       'Implementing [Proxy Bridge] to connect [Varion Web3] to [Web2 technologies].',
-      'Conducting open beta to [Testnet].'
+      'Conducting [Open Beta] to test unreleased features on [Testnet/Playground] (Iterative Development).'
     ],
     position: 'center'
   },
@@ -97,8 +98,9 @@ const roadmapData = [
     quarter: "Q2-Q3 2025", 
     color: '#6495ED', 
     heading: [
-      'Implementing [Full On-chain Training] & [Modal Inference/Pure DeAI].',
-      'Joining on-site blockchain events to [promote Varion] & [ICP Capabilities].',
+      'Implementing [Fully On-chain Training] & [Model Inference/Pure DeAI].',
+      '[Direct Data Transmission] from Hospital’s [ECG] data to Varion.',
+      'Joining on-site blockchain events to [promote Varion] & [ICP Capabilities] (Market-Fit).',
       'Releasing to [Mainnet].'
     ],
     position: 'right'
