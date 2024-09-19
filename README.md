@@ -68,11 +68,11 @@ npm start
 Once deployment is complete, check out Varion's User Manual for a comprehensive guide on how to fully utilize the application at [Varion Gitbook](https://varion.gitbook.io/varion-ai-documentation).
 
 ## Developers
-Anders Willard Leo - ML Engineer
-Alden Budiman - Product Manager
-Brian Altan - Project Lead
-Kenneth Bryan - Web3 Engineer
-Terris Alvin - UI/UX Designer
+- Anders Willard Leo - ML Engineer
+- Alden Budiman - Product Manager
+- Brian Altan - Project Lead
+- Kenneth Bryan - Web3 Engineer
+- Terris Alvin - UI/UX Designer
 
 ## License
 
